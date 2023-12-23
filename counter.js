@@ -116,9 +116,18 @@ document.addEventListener('DOMContentLoaded', () => {
     updateEsc();
     updateRR();
   });
-  document.getElementById('theme-toggle').addEventListener('click', function () {
-    document.body.classList.toggle('dark-theme');
-  });
+  // Переключение темы сайта и сохранение значения
+  const toggle = document.getElementById('theme-toggle');
+  const theme = window.localStorage.getItem("theme");
+
+if (theme === 'dark-theme') document.body.classList.add('dark-theme');
+
+toggle.addEventListener("click", () => {
+  document.body.classList.toggle('dark-theme');
+  if (theme === 'dark-theme') {
+    window.localStorage.setItem("theme", null);
+  } else window.localStorage.setItem("theme", 'dark-theme');
+});
   // Инициализация значения "escc" при загрузке страницы
   updateEsc();    updateRR();
 });
