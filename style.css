@@ -125,28 +125,41 @@ body.dark-theme {
   justify-content: space-between;
 }
 #theme-toggle {
-  width: 40px;
-  height: 40px;
-  align-self: flex-start;
-  font-family: Font;
-  background-color: rgba(0, 191, 255, 0);
-  border-radius: 15px;
-}
-#winter {
-  margin-top: 50px;
-}
-#winter-toggle {
-  background-color: #ffffff;
-  color: #ff0000;
-  font-size: 1.5em;
+  display: flex;
+  margin-left: 15px;
+  font-size: 0.65cm;
+  background-color: rgb(45, 44, 44);
+  color: #ffffff;
   border: none;
   border-radius: 50%;
   width: 40px;
   height: 40px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  align-self: flex-end;
   transform: translate(-50%, -50%);
+  align-items: center;
+  justify-content: center;
+}
+
+#theme-toggle:hover {
+  background-color: #ff0000;
+  color: #ffffff;
+}
+
+#winter-toggle {
+  display: flex;
+  background-color: rgb(45, 44, 44);
+  color: #ffffff;
+  font-size: 0.7cm;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  transform: translate(-50%, -50%);|
+  align-items: center;
+  justify-content: center;
 }
 
 #winter-toggle:hover {
