@@ -116,17 +116,43 @@ document.addEventListener('DOMContentLoaded', () => {
     updateEsc();
     updateRR();
   });
-  // Переключение темы сайта и сохранение значения
-  const toggle = document.getElementById('theme-toggle');
-  const theme = window.localStorage.getItem("theme");
+// Переключение темы сайта и сохранение значения
+const toggle = document.getElementById('theme-toggle'); // Получаем элемент переключателя
 
-if (theme === 'dark-theme') document.body.classList.add('dark-theme');
+let theme = window.localStorage.getItem("theme"); // Получаем значение темы из локального хранилища
+
+if (theme === 'dark-theme') {
+  document.body.classList.add('dark-theme'); // Если тема - dark-theme, добавляем класс dark-theme к телу документа
+}
 
 toggle.addEventListener("click", () => {
-  document.body.classList.toggle('dark-theme');
-  if (theme === 'dark-theme') {
-    window.localStorage.setItem("theme", null);
-  } else window.localStorage.setItem("theme", 'dark-theme');
+  document.body.classList.toggle('dark-theme'); // Переключаем класс dark-theme у тела документа
+  theme = document.body.classList.contains('dark-theme') ? 'dark-theme' : null; // Обновляем значение темы в зависимости от наличия класса dark-theme
+  window.localStorage.setItem("theme", theme); // Сохраняем значение темы в локальном хранилище
+});
+
+// Проверяем, сохранено ли состояние скрытия
+if (localStorage.getItem("winterHidden") === "true") {
+  var winterDiv = document.getElementById("winter");
+  winterDiv.style.display = "none";
+}
+
+// Обработчик клика на кнопку winter-toggle
+document.getElementById("winter-toggle").addEventListener("click", function() {
+  var winterDiv = document.getElementById("winter");
+
+  // Проверяем текущее состояние скрытия
+  if (winterDiv.style.display === "none") {
+    winterDiv.style.display = "block";
+
+    // Сохраняем состояние скрытия в localStorage
+    localStorage.setItem("winterHidden", "false");
+  } else {
+    winterDiv.style.display = "none";
+
+    // Сохраняем состояние скрытия в localStorage
+    localStorage.setItem("winterHidden", "true");
+  }
 });
   // Инициализация значения "escc" при загрузке страницы
   updateEsc();    updateRR();
