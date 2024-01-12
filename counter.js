@@ -35,23 +35,27 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // Метод для увеличения значения счётчика
-    increment() {
-      this.value++;
-      this.updateValue();
-      updateEsc(); // Обновляем значение "escc"
-      updateRR();
-      this.saveValue(); // Сохраняем значение в локальное хранилище
-    }
+// Метод для увеличения значения счётчика
+increment() {
+    this.value++;
+    this.updateValue();
+    updateEsc(); // Обновляем значение "escc"
+    updateRR();
+    updateEarnings();
+    this.saveValue(); // Сохраняем значение в локальное хранилище
+}
 
-    // Метод для уменьшения значения счётчика
-    decrement() {
-      this.value--;
-      this.updateValue();
-      updateEsc(); // Обновляем значение "escc"
-      updateRR();
-      this.saveValue(); // Сохраняем значение в локальное хранилище
-    }
+// Метод для уменьшения значения счётчика
+decrement() {
+  if (this.value > 0) {
+    this.value--;
+    this.updateValue();
+    updateEsc(); // Обновляем значение "escc"
+    updateRR();
+    updateEarnings();
+    this.saveValue(); // Сохраняем значение в локальное хранилище
+  }
+}
 
     // Метод для сброса значения счётчика
     reset() {
@@ -59,6 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
       this.updateValue();
       updateEsc(); // Обновляем значение "escc"
       updateRR();
+      updateEarnings();
       this.saveValue(); // Сохраняем значение в локальное хранилище
     }
 
@@ -154,6 +159,48 @@ document.getElementById("winter-toggle").addEventListener("click", function() {
     localStorage.setItem("winterHidden", "true");
   }
 });
+
+// Получаем поля ввода для стоимости звонка и стоимости эскалации
+const callCostInput = document.getElementById('callCostInput');
+const escalationCostInput = document.getElementById('escalationCostInput');
+
+// Получаем элемент для отображения заработка
+const earningsValue = document.getElementById('earningsValue');
+
+// Добавляем функцию для расчета заработка
+function updateEarnings() {
+  const earningsPerCall = parseFloat(callCostInput.value);
+  const earningsPerEscalation = parseFloat(escalationCostInput.value);
+  const totalCalls = callsCounter.value - escalationsCounter.value; // Учтено количество звонков без эскалаций
+  const totalEscalations = escalationsCounter.value;
+  const earnings = (totalCalls * earningsPerCall) + (totalEscalations * earningsPerEscalation);
+  earningsValue.textContent = earnings.toFixed(2);
+}
+
+// Сохраняем значения стоимости в localStorage
+callCostInput.addEventListener('change', function() {
+  localStorage.setItem('callCost', callCostInput.value);
+});
+escalationCostInput.addEventListener('change', function() {
+  localStorage.setItem('escalationCost', escalationCostInput.value);
+});
+
+// Загружаем сохраненные значения стоимости из localStorage
+const savedCallCost = localStorage.getItem('callCost');
+const savedEscalationCost = localStorage.getItem('escalationCost');
+if (savedCallCost) {
+  callCostInput.value = savedCallCost;
+}
+if (savedEscalationCost) {
+  escalationCostInput.value = savedEscalationCost;
+}
+
+// Вызываем функцию updateEarnings при загрузке страницы
+updateEarnings();
+
+
+
+
   // Инициализация значения "escc" при загрузке страницы
   updateEsc();    updateRR();
 });
