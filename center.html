@@ -42,36 +42,48 @@
   <body>
     <!-- Контейнер для счётчика "Звонки" -->
     <div class="container">
+      <h1>Звонки</h1>
       <div class="counter" id="calls">
         <button class="btn-increment">+</button>
-        <button class="btn-decrement">-</button>
         <div class="counter-value">0</div>
-        <h1>Звонки</h1>
+        <button class="btn-decrement">-</button>
       </div>
       <button class="btn-reset" id="reset-calls">Сброс</button>
     </div>
 
     <!-- Контейнер для счётчика "Эскалации" -->
     <div class="container">
+      <h1>Эскалации</h1>
       <div class="counter" id="escalations">
         <button class="btn-increment">+</button>
-        <button class="btn-decrement">-</button>
         <div class="counter-value">0</div>
-        <h1>Эскалации</h1>
+        <button class="btn-decrement">-</button>
       </div>
       <button class="btn-reset" id="reset-escalations">Сброс</button>
     </div>
 
     <!-- Контейнер для счётчика "RR" -->
     <div class="container">
+      <h1>Запрос оценки</h1>
       <div class="counter" id="rrlations">
         <button class="btn-increment">+</button>
-        <button class="btn-decrement">-</button>
         <div class="counter-value">0</div>
-        <h1>Запрос оценки</h1>
+        <button class="btn-decrement">-</button>
       </div>
+
       <button class="btn-reset" id="reset-rrlations">Сброс</button>
     </div>
+    <style>
+      .container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        align-items: center;
+        justify-items: center;
+        margin: 20px;
+        font-family: Font;
+      }
+    </style>
     <div id="escrr">
       <!-- Контейнер для вывода значения "escc" -->
       <div id="esc">
@@ -91,7 +103,18 @@
         </div>
       </div>
     </div>
-    <div class="container">
+    <style>
+      .container-earnings {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        align-items: start;
+        justify-items: end;
+        margin: 20px;
+        font-family: Font;
+      }
+    </style>
+    <div class="container-earnings">
       <div id="earningsCounter">
         <div>
           Стоимость звонка
@@ -109,7 +132,7 @@
 
     <div id="theme">
       <button class="theme-toggle" id="theme-toggle"></button>
-      <a class="center-toggle" id="center-toggle" href="center.html"></a>
+      <a class="center-toggle1" id="center-toggle1" href="index.html"></a>
       <button class="winter-toggle" id="winter-toggle"></button>
     </div>
     <div id="winter">

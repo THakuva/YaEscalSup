@@ -1,0 +1,241 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  background: rgb(45, 44, 44);
+  color: white;
+}
+@font-face {
+  font-family: "Font";
+  src: local("Font"), url("font.ttf");
+}
+
+.snowman {
+  background: transparent url(leav.png) no-repeat scroll right top / 400px auto;
+  bottom: 0px;
+  display: block;
+  height: 400px;
+  position: fixed;
+  left: 5%;
+  width: 400px;
+  z-index: -1;
+  filter: brightness(40%);
+}
+.snowflake {
+  filter: brightness(40%);
+}
+.snow-layer {
+  background: transparent url(leaves.png) repeat-x scroll center top / 80vh 40px;
+  bottom: 0;
+  display: block;
+  height: 40px;
+  position: fixed;
+  width: 100%;
+  z-index: 2;
+  filter: brightness(40%);
+}
+@media screen and (max-width: 1024px) {
+  .snowman,
+  .snow-layer {
+    display: none;
+  }
+}
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  align-items: start;
+  justify-items: end;
+  margin: 20px;
+  font-family: Font;
+}
+
+.container h1 {
+  margin: 10px 0;
+  width: 300px;
+}
+
+.counter {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.btn-increment,
+.btn-decrement,
+.btn-reset {
+  transition: transform 0.5s;
+}
+
+.btn-increment:hover,
+.btn-decrement:hover,
+.btn-reset:hover {
+  transform: scale(1.1);
+}
+
+
+.btn-increment,
+.btn-decrement,
+.btn-reset {
+  height: 50px;
+  width: 120px;
+  padding: 0 0px;
+  border-radius: 10px;
+  font-size: 24px;
+  font-family: Font;
+  background-color: rgb(0, 0, 0);
+  border: 5px solid rgb(0, 0, 0);
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 0 20px #02f7ff57;
+}
+
+.btn-reset {
+  font-size: 20px;
+  font-family: Font;
+}
+
+.counter-value {
+  height: 50px;
+  min-width: 120px;
+  border-radius: 10px;
+  background-color: rgb(148, 212, 242);
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Font;
+  color: white;
+  box-shadow: 0 0 20px #02f7ff57;
+}
+#escrr {
+  display: grid;
+  grid-template-columns: auto;
+}
+#esc {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
+}
+
+#escc {
+  font-size: 30px;
+  margin: 10px 0;
+  font-family: Font;
+}
+#rr {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
+}
+
+#rra {
+  font-size: 30px;
+  margin: 10px 0;
+  font-family: Font;
+  font-style: bold;
+}
+#theme {
+  position: absolute;
+  bottom: 30px;
+  right: 10px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.theme-toggle {
+  width: 40px;
+  height: 40px;
+  border: none;
+  margin-bottom: 5px;
+  background-image: url(moon.ico);
+  background-color: transparent;
+  background-size: cover;
+}
+
+.center-toggle {
+  width: 40px;
+  height: 40px;
+  border: none;
+  background-image: url(index-dark.ico);
+  background-color: transparent;
+  background-size: cover;
+  margin-bottom: 5px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.center-toggle1 {
+  width: 40px;
+  height: 40px;
+  border: none;
+  background-image: url(center-dark.ico);
+  background-color: transparent;
+  background-size: cover;
+  margin-bottom: 5px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+#winter-toggle {
+  background-image: url(vesna-darkon.ico);
+  width: 40px;
+  height: 40px;
+  border: none;
+  background-color: transparent;
+  background-size: cover;
+  margin-bottom: 5px;
+}
+
+#winter-toggle.on {
+  background-image: url(vesna-darkoff.ico);
+  width: 40px;
+  height: 40px;
+  border: none;
+  background-color: transparent;
+  background-size: cover;
+  margin-bottom: 5px;
+}
+
+#winter-toggle,
+#theme-toggle,
+#center-toggle,
+#center-toggle1 {
+  transition: transform 0.5s;
+}
+
+#winter-toggle:hover,
+#theme-toggle:hover,
+#center-toggle:hover,
+#center-toggle1:hover {
+  transform: scale(1.1);
+}
+
+
+#eearningsValue {
+  margin-top: 5px;
+}
+#escalationCostInput,
+#callCostInput {
+  width: 40px;
+  height: 20px;
+  padding: 10px;
+  margin: 5px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+#escalationCostInput:focus,
+#callCostInput:focus {
+  box-shadow: 0 0 15px rgba(0, 0, 255, 0.5);
+}
+
