@@ -338,4 +338,9 @@ body {
 .hidden {
   display: none; /* Скрыто с помощью display: none */
 }
+.sub{
+  font-size: 12px;
+  text-align: center; /* Центрирование текста */
+  opacity: 0.7;
+}
 /* Таймер */
