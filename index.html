@@ -92,6 +92,25 @@
       </div>
     </div>
     <div class="container">
+      <div></div>
+      <div id="timer">
+        <div class="timer-container">
+          <h1 id="time-left">15:00</h1>
+          <div class="buttons">
+            <button id="start" class="button">Начать</button>
+            <button id="pause" class="button">Пауза</button>
+            <button id="reset" class="button">Сброс</button>
+          </div>
+          <div>
+            <button class="time-button active" data-interval="15">15 минут</button>
+            <button class="time-button" data-interval="30">30 минут</button>
+            <button class="time-button" data-interval="60">60 минут</button>
+          </div>
+        </div>
+        <div class="hide-button-container">
+          <button id="hide-timer" class="button">Скрыть таймер</button>
+        </div>
+      </div>
       <div id="earningsCounter">
         <div>
           Стоимость звонка
@@ -105,8 +124,10 @@
           Заработок: <span id="earningsValue"></span>
         </div>
       </div>
+      
     </div>
 
+  
     <div id="theme">
       <button class="theme-toggle" id="theme-toggle"></button>
       <a class="center-toggle" id="center-toggle" href="center.html"></a>

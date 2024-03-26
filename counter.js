@@ -191,6 +191,115 @@ document.addEventListener("DOMContentLoaded", () => {
   winterToggle.addEventListener("click", () => {
     winterToggle.classList.toggle("on");
   });
+  const timeLeftEl = document.getElementById("time-left");
+  const startBtn = document.getElementById("start");
+  const pauseBtn = document.getElementById("pause");
+  const resetBtn = document.getElementById("reset");
+  const timeButtons = document.querySelectorAll(".time-button");
+  const hideTimerBtn = document.getElementById("hide-timer");
+
+  let intervalId;
+  let isPaused = false;
+  let remainingSeconds;
+
+  // Функция для обновления отображаемого времени
+  function updateDisplay(secondsLeft, forceUpdate = false) {
+    if (!intervalId && !forceUpdate) {
+      return;
+    }
+
+    const minutes = Math.floor(secondsLeft / 60);
+    const seconds = secondsLeft % 60;
+    timeLeftEl.textContent = `${minutes.toString().padStart(2, "0")}:${seconds
+      .toString()
+      .padStart(2, "0")}`;
+  }
+
+  // Запуск таймера
+  startBtn.addEventListener("click", () => {
+    clearInterval(intervalId); // Очистка существующего интервала
+    const selectedInterval = parseInt(
+      document.querySelector(".time-button.active").dataset.interval
+    );
+    remainingSeconds = selectedInterval * 60;
+    isPaused = false; // Сброс флага паузы
+    intervalId = startTimer(remainingSeconds);
+    pauseBtn.textContent = "Пауза";
+  });
+
+  // Пауза/продолжение таймера
+  pauseBtn.addEventListener("click", () => {
+    if (intervalId) {
+      if (!isPaused) {
+        clearInterval(intervalId);
+        isPaused = true;
+        pauseBtn.textContent = "Продолжить";
+      } else {
+        intervalId = startTimer(remainingSeconds);
+        isPaused = false;
+        pauseBtn.textContent = "Пауза";
+      }
+    }
+  });
+
+  // Сброс таймера
+  resetBtn.addEventListener("click", () => {
+    clearInterval(intervalId);
+    updateDisplay(15 * 60); // Установка 15:00
+    document.querySelector(".time-button.active").classList.remove("active");
+    document
+      .querySelector(".time-button[data-interval='15']")
+      .classList.add("active");
+    intervalId = null; // Сброс интервала
+    isPaused = false; // Сброс флага паузы
+    pauseBtn.textContent = "Пауза";
+  });
+
+  // Функция для логики таймера (детали реализации зависят от вашей библиотеки таймера)
+  function startTimer(seconds) {
+    updateDisplay(seconds);
+
+    intervalId = setInterval(() => {
+      remainingSeconds--;
+      updateDisplay(remainingSeconds);
+
+      if (remainingSeconds === 0) {
+        clearInterval(intervalId);
+        // Обработка завершения таймера (например, звук, оповещение)
+      }
+    }, 1000); // Обновление каждую секунду
+
+    return intervalId;
+  }
+  // Обработка кнопок выбора времени
+  timeButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const selectedInterval = parseInt(button.dataset.interval);
+      document.querySelector(".time-button.active").classList.remove("active");
+      button.classList.add("active");
+
+      // Сброс таймера
+      clearInterval(intervalId);
+      isPaused = false;
+      pauseBtn.textContent = "Пауза";
+
+      // Обновление отображения таймера
+      remainingSeconds = selectedInterval * 60;
+      updateDisplay(remainingSeconds, true);
+    });
+  });
+  // Скрытие/отображение таймера
+  hideTimerBtn.addEventListener("click", () => {
+    const timerContainer = document.querySelector(".timer-container");
+    timerContainer.classList.toggle("hidden");
+
+    // Обновление текста кнопки
+    if (timerContainer.classList.contains("hidden")) {
+      hideTimerBtn.textContent = "Показать таймер";
+    } else {
+      hideTimerBtn.textContent = "Скрыть таймер";
+    }
+  });
   // Вызываем функцию updateEarnings при загрузке страницы
   updateEarnings();
 
