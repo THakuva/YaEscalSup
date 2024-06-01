@@ -4,39 +4,14 @@
   padding: 0;
 }
 body {
-  background: white;
+  background-color: #be91c6;
+  color: white;
 }
 @font-face {
   font-family: "Font";
   src: local("Font"), url("font.ttf");
 }
 
-.snowman {
-  background: transparent url(leav.png) no-repeat scroll right top / 400px auto;
-  bottom: 0px;
-  display: block;
-  height: 400px;
-  position: fixed;
-  left: 5%;
-  width: 400px;
-  z-index: -1;
-}
-.snow-layer {
-  background: transparent url(leaves.png) repeat-x scroll center top / 80vh 40px;
-  bottom: 0;
-  display: block;
-  height: 40px;
-  position: fixed;
-  width: 100%;
-  z-index: 2;
-}
-
-@media screen and (max-width: 1024px) {
-  .snowman,
-  .snow-layer {
-    display: none;
-  }
-}
 .container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -78,8 +53,8 @@ body {
   border-radius: 10px;
   font-size: 24px;
   font-family: Font;
-  background-color: rgb(148, 212, 242);
-  border: 5px solid rgb(148, 212, 242);
+  background-color: #5e30d9;
+  border: 5px solid #5e30d9;
   color: white;
   cursor: pointer;
 }
@@ -93,7 +68,7 @@ body {
   height: 50px;
   min-width: 120px;
   border-radius: 10px;
-  background-color: rgb(148, 212, 242);
+  background-color: #5e30d9;
   font-size: 30px;
   display: flex;
   justify-content: center;
@@ -145,7 +120,7 @@ body {
   width: 40px;
   height: 40px;
   border: none;
-  background-image: url(solar.ico);
+  background-image: url(stylesimg/solar.ico);
   background-color: transparent;
   background-size: cover;
   margin-bottom: 5px;
@@ -155,7 +130,7 @@ body {
   width: 40px;
   height: 40px;
   border: none;
-  background-image: url(index-light.ico);
+  background-image: url(stylesimg/index-light.ico);
   background-color: transparent;
   background-size: cover;
   margin-bottom: 5px;
@@ -168,13 +143,13 @@ body {
   width: 40px;
   height: 40px;
   border: none;
-  background-image: url(center-light.ico);
+  background-image: url(stylesimg/center-light.ico);
   background-color: transparent;
   background-size: cover;
   margin-bottom: 5px;
 }
 #winter-toggle {
-  background-image: url(vesna-lighton.ico);
+  background-image: url(stylesimg/vesna-lighton.ico);
   width: 40px;
   height: 40px;
   border: none;
@@ -184,7 +159,7 @@ body {
 }
 
 #winter-toggle.on {
-  background-image: url(vesna-lightoff.ico);
+  background-image: url(stylesimg/vesna-lightoff.ico);
   width: 40px;
   height: 40px;
   border: none;
@@ -225,4 +200,29 @@ body {
 #escalationCostInput:focus,
 #callCostInput:focus {
   box-shadow: 0 0 15px rgba(0, 0, 255, 0.5);
+}
+#stars-container {
+  display: none;
+}
+.background-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+}
+.snowman {
+  background: transparent url(stylesimg/campfire.gif) no-repeat scroll right top /
+    400px auto;
+  bottom: 20px;
+  display: block;
+  height: 400px;
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  z-index: -1;
+  margin: 0 auto; /* Резервный вариант для старых браузеров */
 }

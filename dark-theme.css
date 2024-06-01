@@ -4,7 +4,7 @@
   padding: 0;
 }
 body {
-  background: rgb(45, 44, 44);
+  background: rgb(34, 32, 52);
   color: white;
 }
 @font-face {
@@ -13,29 +13,30 @@ body {
 }
 
 .snowman {
-  background: transparent url(leav.png) no-repeat scroll right top / 400px auto;
-  bottom: 0px;
+  background: transparent url(stylesimg/campfire.gif) no-repeat scroll right top /
+    400px auto;
+  bottom: -150px;
   display: block;
   height: 400px;
   position: fixed;
-  left: 5%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 400px;
-  z-index: -1;
-  filter: brightness(40%);
+  z-index: -2;
+  margin: 0 auto; /* Резервный вариант для старых браузеров */
 }
 .snowflake {
   filter: brightness(40%);
 }
 .snow-layer {
-  background: transparent url(leaves.png) repeat-x scroll center top / 80vh 40px;
   bottom: 0;
   display: block;
-  height: 40px;
+  height: 15%;
   position: fixed;
   width: 100%;
-  z-index: 2;
-  filter: brightness(40%);
+  z-index: -2;
 }
+
 @media screen and (max-width: 1024px) {
   .snowman,
   .snow-layer {
@@ -153,7 +154,7 @@ body {
   height: 40px;
   border: none;
   margin-bottom: 5px;
-  background-image: url(moon.ico);
+  background-image: url(stylesimg/moon.ico);
   background-color: transparent;
   background-size: cover;
 }
@@ -162,7 +163,7 @@ body {
   width: 40px;
   height: 40px;
   border: none;
-  background-image: url(index-dark.ico);
+  background-image: url(stylesimg/index-dark.ico);
   background-color: transparent;
   background-size: cover;
   margin-bottom: 5px;
@@ -175,7 +176,7 @@ body {
   width: 40px;
   height: 40px;
   border: none;
-  background-image: url(center-dark.ico);
+  background-image: url(stylesimg/center-dark.ico);
   background-color: transparent;
   background-size: cover;
   margin-bottom: 5px;
@@ -184,7 +185,7 @@ body {
   -moz-appearance: none;
 }
 #winter-toggle {
-  background-image: url(vesna-darkon.ico);
+  background-image: url(stylesimg/vesna-darkon.ico);
   width: 40px;
   height: 40px;
   border: none;
@@ -194,7 +195,7 @@ body {
 }
 
 #winter-toggle.on {
-  background-image: url(vesna-darkoff.ico);
+  background-image: url(stylesimg/vesna-darkoff.ico);
   width: 40px;
   height: 40px;
   border: none;
@@ -235,4 +236,43 @@ body {
 #escalationCostInput:focus,
 #callCostInput:focus {
   box-shadow: 0 0 15px rgba(0, 0, 255, 0.5);
+}
+#stars-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+.star {
+  position: absolute;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0 0 10px #fff;
+  opacity: 0;
+  animation: animStar linear infinite, flicker 3s infinite;
+}
+@keyframes animStar {
+  from {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(-2000px);
+    opacity: 1;
+  }
+}
+@keyframes flicker {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+.background-container {
+  display: none;
 }
